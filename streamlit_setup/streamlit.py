@@ -10,13 +10,13 @@ st.set_page_config(
 )
 
 # Page title
-st.title('Maintenance - Failure Prediction')
+st.title('Pognozowanie awarii w maszynach')
 st.image('images/maintenance.jpg')
 st.write("\n\n")
 
 st.markdown(
     """
-    This app aims to assist in classifying failures, thereby reducing the time required to analyze machine problems. It enables the analysis of sensor data to classify failures swiftly and expedite the troubleshooting process.    
+    Ta aplikacja ma na celu pomóc w klasyfikowaniu awarii, zmniejszając tym samym czas potrzebny na analizę problemów maszynowych. Umożliwia analizę danych z czujników w celu szybkiej klasyfikacji awarii i przyspieszenia procesu rozwiązywania problemów. Źródło aplikacji demo: [Failure-Classifier-to-Maintenance](https://github.com/thales-vignoli/Failure-Classifier-to-Maintenance).   
     """
 )
 
@@ -28,14 +28,14 @@ with open('model/model.pkl', 'rb') as model_file:
 col1, col2 = st.columns(2)
 
 with col1:
-    air = st.number_input(label='Air Temperature')
-    process = st.number_input(label='Process Temperature')
-    rpm = st.number_input(label='Rotational Speed')
+    air = st.number_input(label='Temperatura powietrza')
+    process = st.number_input(label='Temperatura procesu')
+    rpm = st.number_input(label='Prędkość obrotowa')
 
 with col2:
-    torque = st.number_input(label='Torque')
-    tool_wear = st.number_input(label='Tool Wear')
-    type = st.selectbox(label='Type', options=['Low', 'Medium', 'High'])
+    torque = st.number_input(label='Moment obrotowy')
+    tool_wear = st.number_input(label='Zużycie narzędzia')
+    type = st.selectbox(label='Typ', options=['Low', 'Medium', 'High'])
 
 # Function to predict the input
 def prediction(air, process, rpm, torque, tool_wear, type):
